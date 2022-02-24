@@ -3,6 +3,7 @@ package dd.code.test;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**求一个集合的所有子集
@@ -16,6 +17,8 @@ public class CollectionsSubTest {
     @Test
     public void test(){
         int[] a = {1,2,4,3,7};
+        a[10]=100;
+        System.out.printf(Arrays.toString(a));
         List<List<Integer>> resultList = new ArrayList<>();
 //        subList(a, 0,resultList ,new ArrayList<>());
 ////
@@ -24,6 +27,12 @@ public class CollectionsSubTest {
 
         System.out.printf("subCollections"+subCollections.toString());
 
+    }
+    @Test
+    public void test2(){
+        int[] a = {1,2,4,3,7};
+        a[10]=100;
+        System.out.printf(Arrays.toString(a));
     }
     public List<List<Integer>> getSubCollections(int[] a){
         int[] b = new int[8];
