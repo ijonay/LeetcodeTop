@@ -17,7 +17,7 @@ public class ClimbStairsTest {
 
     @Test
     public void climbTest(){
-        int sum = climbStairs3(1000);
+        int sum = climbStairs3(5);
         System.out.println(sum);
 
     }

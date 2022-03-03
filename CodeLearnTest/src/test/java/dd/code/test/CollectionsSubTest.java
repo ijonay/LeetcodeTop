@@ -18,14 +18,14 @@ public class CollectionsSubTest {
     public void test(){
         int[] a = {1,2,4,3,7};
         a[10]=100;
-        System.out.printf(Arrays.toString(a));
+        System.out.println(Arrays.toString(a));
         List<List<Integer>> resultList = new ArrayList<>();
 //        subList(a, 0,resultList ,new ArrayList<>());
 ////
 //        System.out.printf("resultList"+resultList.toString());
         List<List<Integer>> subCollections = getSubCollections(a);
 
-        System.out.printf("subCollections"+subCollections.toString());
+        System.out.println("subCollections"+subCollections.toString());
 
     }
     @Test
@@ -69,9 +69,7 @@ public class CollectionsSubTest {
             }else{
                 i++;
             }
-
         }
-
     }
     /**
      * @description

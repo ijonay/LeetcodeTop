@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.springframework.stereotype.Component;
 
 import java.util.BitSet;
+import java.util.PriorityQueue;
+import java.util.Random;
 
 /**
  * @Author zhangyong
@@ -254,5 +256,45 @@ public class TopKTest {
         if (a2.length > 0) {    //查看数组是否为空
             _quickSort(a2, 0, a2.length - 1);
         }
+    }
+
+
+    /**优先队列 实现topK 问题的解决
+     * @Author zhangyong
+     * @Description
+     * @Date 14:35 2022/3/3
+     * @Param
+     * @return
+     **/
+    public static PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
+    public static  int K = 10;
+
+    public static void add(int i) {
+        if (queue.size() < K) {
+            queue.add(i);
+        } else {
+            // Min heap
+            int min = queue.peek();
+            if (i > min) {
+                queue.poll();
+                queue.add(i);
+            }
+        }
+    }
+
+    public static void print() {
+        while (!queue.isEmpty()) {
+            Integer i = queue.poll();
+            System.out.println(i);
+        }
+    }
+    public static void main(String[] args) {
+        Random r = new Random();
+
+        for (int i = 0; i < 100; i++) {
+            add(r.nextInt(100));
+        }
+
+        print();
     }
 }

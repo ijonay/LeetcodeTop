@@ -57,7 +57,7 @@ class QueryGrantTypeService {
     public String getResult(String resourceType){
         String resourceId = "100";
         //Controller根据 优惠券类型resourceType、编码resourceId 去查询 发放方式grantType
-        Function<String,String> result=grantTypeMap.get(resourceType);
+        Function<String,String> result = grantTypeMap.get(resourceType);
         if(result!=null){
             //传入resourceId 执行这段表达式获得String型的grantType
             return result.apply(resourceId);
