@@ -3,10 +3,7 @@ package dd.code.test;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @Author zhangyong
@@ -196,7 +193,75 @@ class Tree {
     }
 
     public static void main(String[] args) {
-        HashMap map = new HashMap();
+
+        LinkedList<String> queue = new LinkedList<String>();
+        queue.add("qwe");
+        queue.add("qwe1");
+        queue.add("qwe2");
+        queue.add("qwe3");
+        queue.add(0,"sdfsd");
+        System.out.printf("queue"+queue.toArray());
+
+
+    }
+
+    /**二叉树 层级遍历
+     * @Author zhangyong
+     * @Description
+     * @Date 15:29 2022/3/4
+     * @Param [root]
+     * @return void
+     **/
+    public void levelIterator(Tree root) {
+        if (root == null) {
+            return;
+        }
+        LinkedList<Tree> queue = new LinkedList<Tree>();
+        Tree current = null;
+        queue.offer(root);//将根节点入队
+        while (!queue.isEmpty()) {
+            current = queue.poll();//出队队头元素并访问
+            System.out.print(current.data + "-->");
+            if (current.leftNode != null)//如果当前节点的左节点不为空入队
+            {
+                queue.offer(current.leftNode);
+            }
+            if (current.rightNode != null)//如果当前节点的右节点不为空，把右节点入队
+            {
+                queue.offer(current.rightNode);
+            }
+        }
+
+    }
+
+    /**层级遍历 从叶子节点开始
+     * @Author zhangyong
+     * @Description
+     * @Date 15:44 2022/3/4
+     * @Param [root]
+     * @return java.util.List<java.util.List<java.lang.Integer>>
+     **/
+    public List<List<Integer>> levelOrderBottom(Tree root) {
+        Queue<Tree> queue = new LinkedList<>();
+        List<List<Integer>> result = new LinkedList<>();
+        queue.add(root);
+        while (queue.size() > 0) {
+            List<Integer> temp = new ArrayList<>();
+            int count = queue.size();
+            while (count-- > 0) {
+                Tree node = queue.poll();
+                if (node == null) {
+                    continue;
+                }
+                temp.add(node.data);
+                queue.add(node.leftNode);
+                queue.add(node.rightNode);
+            }
+            if (temp.size() > 0) {
+                result.add(0, temp);
+            }
+        }
+        return result;
     }
 
 }

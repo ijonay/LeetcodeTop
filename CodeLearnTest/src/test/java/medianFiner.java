@@ -1,5 +1,4 @@
-import java.util.Collections;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**找出一个数组的中位数 优先级队列的使用
  * @Author zhangyong
@@ -45,6 +44,18 @@ class MedianFinder {
         }
         else {
             return maxHeap.peek();
+        }
+    }
+    public void TimerTest2(){
+        Timer timer = new Timer();
+        timer.schedule(new TimerTaskTest2(),1000,2000);//tiemr.schedule(执行的方法,延迟时间,多久执行一次)
+        timer.purge();
+    }
+
+    class TimerTaskTest2 extends TimerTask {
+        @Override
+        public void run() {
+            System.out.println("本次任务执行时间"+new Date());
         }
     }
 }
