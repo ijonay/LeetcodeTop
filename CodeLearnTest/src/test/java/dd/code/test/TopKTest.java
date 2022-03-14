@@ -26,6 +26,7 @@ public class TopKTest {
     public void Test1(){
         BitSet set = new BitSet();
         int[] array = {1,3,9,2,4,5,12,34,8,7};
+        ThreadLocal a = new ThreadLocal();
 //        int kv = kv(array, 3);
 //        log.info("kv(array, 3):{}",kv);
 //        quickModify(array,1,9,3);
