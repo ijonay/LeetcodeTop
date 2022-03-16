@@ -15,8 +15,11 @@ public class MergeSortList {
         int[] b = {1, 3, 4, 8, 13, 23, 28, 31, 51};
         ListNode listNode1 = ListNode.arrayToListNode(a);
         ListNode listNode2 = ListNode.arrayToListNode(b);
-        ListNode listNode = mergeTwoLists(listNode1, listNode2);
-        ListNode.printListNode(listNode);
+
+        ListNode listNode3 = ListNode.reverseKGroup(listNode1, 2);
+        ListNode.printListNode(listNode3);
+//        ListNode listNode = mergeTwoLists(listNode1, listNode2);
+//        ListNode.printListNode(listNode);
 
 //        ListNode reverse = ListNode.reverse(listNode1);
 //        ListNode.printListNode(reverse);
@@ -166,7 +169,7 @@ class ListNode {
      * @Param [head, k]
      * @return dd.code.test.ListNode
      **/
-    public ListNode reverseKGroup(ListNode head, int k) {
+    public static ListNode reverseKGroup(ListNode head, int k) {
         if(head == null || head.next == null){
             return head;
         }
