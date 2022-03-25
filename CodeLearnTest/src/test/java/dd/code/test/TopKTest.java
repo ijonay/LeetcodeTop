@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 import java.util.BitSet;
 import java.util.PriorityQueue;
 import java.util.Random;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 /**
  * @Author zhangyong
@@ -291,11 +295,36 @@ public class TopKTest {
     }
     public static void main(String[] args) {
         Random r = new Random();
-
-        for (int i = 0; i < 100; i++) {
-            add(r.nextInt(100));
-        }
-
-        print();
+        String a ="dfgsd";
+        int i1 = a.offsetByCodePoints(2, 2);
+//        Stream.of("Hello world!")
+//
+//                .map(Scanner::new)
+//
+//                .flatMap(s -> s.findAll("l"))
+//
+//                .map(mr -> mr.start())
+//
+//                .forEach(System.out::println);
+        int fromIndex = getFromIndex("sfdsfsfsfsd", "sf", 2);
+        System.out.println(""+fromIndex);
     }
+
+    //子字符串modelStr在字符串str中第count次出现时的下标
+    public static int getFromIndex(String str, String modelStr, Integer count) {
+        //对子字符串进行匹配
+        Matcher slashMatcher = Pattern.compile(modelStr).matcher(str);
+        int index = 0;
+        //matcher.find();尝试查找与该模式匹配的输入序列的下一个子序列
+        while(slashMatcher.find()) {
+            index++;
+            //当modelStr字符第count次出现的位置
+            if(index == count){
+                break;
+            }
+        }
+        //matcher.start();返回以前匹配的初始索引。
+        return slashMatcher.start();
+    }
+
 }
