@@ -27,6 +27,10 @@ public class TopKTest {
         BitSet set = new BitSet();
         int[] array = {1,3,9,2,4,5,12,34,8,7};
         ThreadLocal a = new ThreadLocal();
+        Stirng a = new String("abc");
+        a.intern();
+        Integer a = new Integer(20);
+        a.hashCode();
 //        int kv = kv(array, 3);
 //        log.info("kv(array, 3):{}",kv);
 //        quickModify(array,1,9,3);
@@ -213,6 +217,28 @@ public class TopKTest {
             heapify(arr, min, len);
         }
     }
+
+    /**
+     * 一次遍历找第二大的数
+     * @param a
+     * @return
+     */
+    public int find2Max(int[] a){
+        int max1 = 0;
+        int max2 = 0;
+        for(int i=1; i<a.length; i++)
+        {
+            if(a[i] > a[max1])
+            {
+                max2 = max1;
+                max1 = i;
+            } 
+            else if(a[i] >  a[max2] && a[i] < a[max1])
+                max2 = i;
+        }
+        return max2;
+    }
+
 
     /**快速排序
      * @Author zhangyong

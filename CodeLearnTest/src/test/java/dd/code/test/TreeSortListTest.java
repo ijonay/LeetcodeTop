@@ -1,6 +1,5 @@
-package dd.code.test;
+package test.java.dd.code.test;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.util.*;
@@ -10,7 +9,6 @@ import java.util.*;
  * @Description
  * @Date 7:54 下午 2021/11/9 2021
  **/
-@Slf4j
 /**
  * 二叉树 前序 中序 后序遍历
  **/
@@ -19,7 +17,8 @@ public class TreeSortListTest {
 
     @Test
     public void climbTest(){
-
+        String a = "";
+        a.codePointAt()
 
     }
 
@@ -243,6 +242,7 @@ class Tree {
      **/
     public List<List<Integer>> levelOrderBottom(Tree root) {
         Queue<Tree> queue = new LinkedList<>();
+        String a ="";
         List<List<Integer>> result = new LinkedList<>();
         queue.add(root);
         while (queue.size() > 0) {
@@ -263,5 +263,40 @@ class Tree {
         }
         return result;
     }
+
+
+    /**
+     * 最长回文子串
+     * @param s
+     * @return
+     */
+    public static String longestPalindrome(String s) {
+        if (s == null || s.length() < 1) {
+            return "";
+        }
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len1 = expandAroundCenter(s, i, i);
+            int len2 = expandAroundCenter(s, i, i+1);
+
+            int len = Math.max(len1, len2);
+            if (len > end - start) {
+                start = i - (len-1) / 2;
+                end = i + len / 2;
+            }
+        }
+
+        return s.substring(start, end + 1);
+    }
+
+    public static  int expandAroundCenter(String s, int left, int right) {
+        int L = left, R = right;
+        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
+            L--;
+            R++;
+        }
+        return (R-1) - (L+1) + 1;
+    }
+
 
 }
