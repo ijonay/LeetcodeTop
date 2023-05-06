@@ -31,10 +31,10 @@ public class TopKTest {
         BitSet set = new BitSet();
         int[] array = {1,3,9,2,4,5,12,34,8,7};
         ThreadLocal a = new ThreadLocal();
-        Stirng a = new String("abc");
-        a.intern();
-        Integer a = new Integer(20);
-        a.hashCode();
+//        String a = new String("abc");
+//        a.intern();
+//        Integer a = new Integer(20);
+//        a.hashCode();
 //        int kv = kv(array, 3);
 //        log.info("kv(array, 3):{}",kv);
 //        quickModify(array,1,9,3);

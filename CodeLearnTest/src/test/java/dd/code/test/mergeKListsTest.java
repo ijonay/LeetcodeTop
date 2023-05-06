@@ -2,8 +2,7 @@ package dd.code.test;
 
 import org.junit.Test;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @Author zhangyong
@@ -16,6 +15,34 @@ public class mergeKListsTest {
 
     @Test
     public void test(){
+        int[] nums =new int[]{0,3,7,2,5,8,4,6,0,1};
+        int i = longestConsecutive(nums);
+
+
+    }
+    public int longestConsecutive(int[] nums) {
+        int maxNum =0;
+        for(int i =0; i< nums.length;i++){
+            if(nums[i]>maxNum){
+                maxNum = nums[i];
+            }
+        }
+        int[] hashNums = new int[maxNum+1];
+        for(int i =0; i< nums.length;i++){
+            hashNums[nums[i]] = 1;
+        }
+        int maxLength =0;
+        int index =-1;
+        for(int i =0; i< hashNums.length;i++){
+
+            if(hashNums[i]>0 ){
+                maxLength = Math.max(maxLength, i-index);
+
+            }else{
+                index = i;
+            }
+        }
+        return maxLength;
 
     }
 

@@ -2,6 +2,7 @@ package dd.code.test;
 
 import org.junit.Test;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**java实现两个有序单链表合并
@@ -15,16 +16,39 @@ public class MergeSortList {
     public void test(){
         int[] a = {1, 2, 5, 7, 13, 21};
         int[] b = {1, 3, 4, 8, 13, 23, 28, 31, 51};
-        ListNode listNode1 = ListNode.arrayToListNode(a);
-        ListNode listNode2 = ListNode.arrayToListNode(b);
-
-        ListNode listNode3 = ListNode.reverseKGroup(listNode1, 2);
-        ListNode.printListNode(listNode3);
+//        ListNode listNode2 = ListNode.arrayToListNode(b);
+        int[] c = {4,2,1,3};
+        ListNode listNode1 = ListNode.arrayToListNode(c);
+//        ListNode listNode3 = ListNode.reverseKGroup(listNode1, 2);
+//        ListNode.printListNode(listNode3);
 //        ListNode listNode = mergeTwoLists(listNode1, listNode2);
 //        ListNode.printListNode(listNode);
-
-//        ListNode reverse = ListNode.reverse(listNode1);
+//        ListNode aa = listNode1;
+//        ListNode reverse = ListNode.reverse(aa);
 //        ListNode.printListNode(reverse);
+//        System.out.println("-------");
+//        ListNode.printListNode(listNode1);
+
+        PriorityQueue<ListNode> priorityQueue = new PriorityQueue<>(
+                new Comparator<ListNode>() {
+                    @Override
+                    public int compare(ListNode o1, ListNode o2) {
+                        return o1.data -o2.data ;
+                    }
+                }
+        );
+        while(listNode1 != null){
+            priorityQueue.add(listNode1);
+            listNode1 = listNode1.next;
+        }
+        ListNode res =new ListNode(0);
+        while(!priorityQueue.isEmpty()){
+            ListNode node = priorityQueue.poll();
+            node.next = null;
+            res.next =node;
+            res = res.next;
+        }
+        System.out.println(priorityQueue.size());
 
 
     }
